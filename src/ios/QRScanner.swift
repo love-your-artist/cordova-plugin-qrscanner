@@ -197,8 +197,8 @@ class QRScanner : CDVPlugin, AVCaptureMetadataOutputObjectsDelegate {
     }
 
     @objc func makeOpaque(){
-        self.webView?.isOpaque = false
-        self.webView?.backgroundColor = UIColor.clear
+        self.webView?.isOpaque = true
+        self.webView?.scrollView?.isOpaque = true
     }
 
     @objc func boolToNumberString(bool: Bool) -> String{
@@ -249,6 +249,8 @@ class QRScanner : CDVPlugin, AVCaptureMetadataOutputObjectsDelegate {
     @objc func pageDidLoad() {
         self.webView?.isOpaque = false
         self.webView?.backgroundColor = UIColor.clear
+        self.webView?.scrollView?.isOpaque = false
+        self.webView?.scrollView?.backgroundColor = UIColor.clear
     }
 
     // ---- BEGIN EXTERNAL API ----
@@ -292,6 +294,8 @@ class QRScanner : CDVPlugin, AVCaptureMetadataOutputObjectsDelegate {
     @objc func show(_ command: CDVInvokedUrlCommand) {
         self.webView?.isOpaque = false
         self.webView?.backgroundColor = UIColor.clear
+        self.webView?.scrollView?.isOpaque = false
+        self.webView?.scrollView?.backgroundColor = UIColor.clear
         self.getStatus(command)
     }
 
